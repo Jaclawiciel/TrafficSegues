@@ -10,14 +10,23 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var segueSwitch: UISwitch!
+    
+    @IBAction func yellowButtonTapped() {
+        if segueSwitch.isOn {
+            performSegue(withIdentifier: "Yellow", sender: nil)
+        }
+    }
+    
+    @IBAction func greenButtonTapped() {
+        if segueSwitch.isOn {
+            performSegue(withIdentifier: "Green", sender: nil)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-    }
-    
-    @IBAction func unwindToRed(unwindSegue: UIStoryboardSegue) {
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,7 +35,9 @@ class ViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        segue.destination.navigationItem.title = textField.text
+        if segue.identifier == "Yellow" {
+            print("Yellow")
+        }
     }
 }
 
